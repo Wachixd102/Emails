@@ -762,35 +762,18 @@ elif page == "🔍 เช็ค SMS":
                     # 2. Transform ด้วย TF-IDF
                     vectorized_text = tfidf.transform([clean_text])
                     
-                                        # 3. ทำนายผล
-                    prediction = int(model.predict(vectorized_text)[0])
+                    # 3. ทำนายผล
+                    prediction = model.predict(vectorized_text)[0]
                     
-                    # 4. ตรวจสอบว่าโมเดลรองรับ predict_proba หรือไม่ (ป้องกัน Error)
+                    # 4. ตรวจสอบว่าโมเดลรองรับ predict_proba หรือไม่
                     has_proba = False
                     probability = None
                     try:
-                        # พยายามดึงค่าความมั่นใจ
-                        probas = model.predict_proba(vectorized_text)[0]
-                        probability = probas
+                        probability = model.predict_proba(vectorized_text)[0]
                         has_proba = True
-                    except Exception:
-                        # ถ้าไม่ได้ ให้ข้ามไป แสดงเฉพาะผลการทำนาย
+                    except (AttributeError, NotImplementedError):
                         has_proba = False
-
-                    # 5. แสดงผลลัพธ์
-                    st.markdown("---")
-                    st.subheader("📊 ผลลัพธ์การวิเคราะห์")
-                    
-                    if prediction == 1:  # Spam
-                        if has_proba:
-                            st.error(f"### 🚨 นี่คือข้อความ SPAM (ขยะ)!\n**ความมั่นใจ:** {probability[1]*100:.2f}%\n\n⚠️ ข้อความนี้มีแนวโน้มสูงที่จะเป็นสแปม ควรลบทิ้งหรือระวังอย่าคลิกลิงก์ใดๆ")
-                        else:
-                            st.error("### 🚨 นี่คือข้อความ SPAM (ขยะ)!\n\n⚠️ ข้อความนี้มีแนวโน้มสูงที่จะเป็นสแปม ควรลบทิ้งหรือระวังอย่าคลิกลิงก์ใดๆ")
-                    else:  # Ham
-                        if has_proba:
-                            st.success(f"### ✅ นี่คือข้อความ HAM (ปกติ)\n**ความมั่นใจ:** {probability[0]*100:.2f}%\n\n✔️ ข้อความนี้ดูปลอดภัย เป็นข้อความปกติ")
-                        else:
-                            st.success("### ✅ นี่คือข้อความ HAM (ปกติ)\n\n✔️ ข้อความนี้ดูปลอดภัย เป็นข้อความปกติ")
+                        probability = None
                     
                     # 5. แสดงผลลัพธ์
                     st.markdown("---")
