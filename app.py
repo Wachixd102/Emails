@@ -597,9 +597,9 @@ Numeric Vector (3,000 features)
                 <div class="developer-photo">👨‍💻</div>
                 <div class="developer-details">
                     <h3>ข้อมูลผู้พัฒนา</h3>
-                    <p><strong>ชื่อ:</strong> [ชื่อ-นามสกุล ของคุณ]</p>
-                    <p><strong>รหัสนักศึกษา:</strong> [รหัส]</p>
-                    <p><strong>อีเมล:</strong> your.email@example.com</p>
+                    <p><strong>ชื่อ:</strong> วชิรวิทย์ พรสวาท </p>
+                    <p><strong>รหัสนักศึกษา:</strong> 664245032</p>
+                    <p><strong>อีเมล:</strong> 664245032@gmail.com</p>
                     <p><strong>โครงการ:</strong> SMS Spam Classification System</p>
                     <p><strong>เทคโนโลยี:</strong> Python, Machine Learning, NLP</p>
                 </div>
@@ -608,7 +608,7 @@ Numeric Vector (3,000 features)
             <div class="content-grid">
                 <div class="card">
                     <h3>🎓 การศึกษา</h3>
-                    <p>ปริญญาตรี/โท สาขาวิทยาการคอมพิวเตอร์/วิทยาศาสตร์ข้อมูล/ปัญญาประดิษฐ์</p>
+                    <p>ปริญญาตรี สาขาวิทยาการคอมพิวเตอร์</p>
                 </div>
                 <div class="card">
                     <h3>💼 ทักษะ</h3>
@@ -645,7 +645,7 @@ Numeric Vector (3,000 features)
 
         <!-- Footer -->
         <div class="footer">
-            <p>&copy; 2026 SMS Spam Classification Project | พัฒนาด้วย ❤️ และ Machine Learning</p>
+            <p>&copy; 2026 SMS Spam Classification Project | พัฒนา นายเอิร์ธ</p>
             <p>โครงการเพื่อการศึกษาและวิจัย</p>
         </div>
     </div>
