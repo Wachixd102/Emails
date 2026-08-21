@@ -751,7 +751,7 @@ elif page == "🔍 เช็ค SMS":
         st.markdown("---")
         predict_button = st.button("🔍 ตรวจสอบข้อความ", use_container_width=True, type="primary")
         
-        if predict_button or 'test_text' in st.session_state:
+                if predict_button or 'test_text' in st.session_state:
             text_to_check = user_input if user_input else st.session_state.get('test_text', '')
             
             if text_to_check.strip():
@@ -764,14 +764,70 @@ elif page == "🔍 เช็ค SMS":
                     
                     # 3. ทำนายผล
                     prediction = model.predict(vectorized_text)[0]
-
-                    # ตรวจสอบว่าโมเดลรองรับ predict_proba หรือไม่
-                    try:
-                    probability = model.predict_proba(vectorized_text)[0]
-                    has_proba = True
-                    except (AttributeError, NotImplementedError):
+                    
+                    # 4. ตรวจสอบว่าโมเดลรองรับ predict_proba หรือไม่
                     has_proba = False
                     probability = None
+                    try:
+                        probability = model.predict_proba(vectorized_text)[0]
+                        has_proba = True
+                    except (AttributeError, NotImplementedError):
+                        has_proba = False
+                        probability = None
+                    
+                    # 5. แสดงผลลัพธ์
+                    st.markdown("---")
+                    st.subheader("📊 ผลลัพธ์การวิเคราะห์")
+                    
+                    if prediction == 1:  # Spam
+                        if has_proba:
+                            st.error(f"""
+                            ### 🚨 นี่คือข้อความ SPAM (ขยะ)!
+                            **ความมั่นใจ:** {probability[1]*100:.2f}%
+                            
+                            ⚠️ ข้อความนี้มีแนวโน้มสูงที่จะเป็นสแปม ควรลบทิ้งหรือระวังอย่าคลิกลิงก์ใดๆ
+                            """)
+                        else:
+                            st.error("""
+                            ### 🚨 นี่คือข้อความ SPAM (ขยะ)!
+                            
+                            ️ ข้อความนี้มีแนวโน้มสูงที่จะเป็นสแปม ควรลบทิ้งหรือระวังอย่าคลิกลิงก์ใดๆ
+                            """)
+                    else:  # Ham
+                        if has_proba:
+                            st.success(f"""
+                            ### ✅ นี่คือข้อความ HAM (ปกติ)
+                            **ความมั่นใจ:** {probability[0]*100:.2f}%
+                            
+                            ✔️ ข้อความนี้ดูปลอดภัย เป็นข้อความปกติ
+                            """)
+                        else:
+                            st.success("""
+                            ### ✅ นี่คือข้อความ HAM (ปกติ)
+                            
+                            ✔️ ข้อความนี้ดูปลอดภัย เป็นข้อความปกติ
+                            """)
+                    
+                    # แสดงข้อมูลเพิ่มเติม
+                    with st.expander("🔬 ดูรายละเอียดการประมวลผล"):
+                        st.markdown("**ข้อความต้นฉบับ:**")
+                        st.code(text_to_check, language='text')
+                        
+                        st.markdown("**ข้อความหลัง Preprocessing:**")
+                        st.code(clean_text, language='text')
+                        
+                        st.markdown("**ความยาวข้อความ:**")
+                        st.write(f"- ต้นฉบับ: {len(text_to_check)} ตัวอักษร")
+                        st.write(f"- หลัง cleaning: {len(clean_text)} ตัวอักษร")
+                        
+                        if has_proba:
+                            st.markdown("**ความน่าจะเป็น:**")
+                            st.write(f"- Spam: {probability[1]*100:.2f}%")
+                            st.write(f"- Ham: {probability[0]*100:.2f}%")
+                        else:
+                            st.markdown("**หมายเหตุ:** โมเดลนี้ไม่ได้ตั้งค่า probability จึงไม่แสดงความมั่นใจ")
+            else:
+                st.warning("⚠️ กรุณากรอกข้อความก่อนทำการตรวจสอบ")
                     
                     # 4. แสดงผลลัพธ์
 st.markdown("---")
