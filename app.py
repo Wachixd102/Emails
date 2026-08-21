@@ -870,6 +870,5 @@ st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: gray; padding: 20px;'>
     <p>📱 SMS Spam Classification Project | Mini Project 2026</p>
-    <p>Developed with ❤️ using Python, Scikit-Learn, and Streamlit</p>
 </div>
 """, unsafe_allow_html=True)
