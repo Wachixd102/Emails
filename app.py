@@ -595,7 +595,7 @@ Numeric Vector (3,000 features)
             
             <div class="developer-info">
                 <div class="developer-photo">
-                    <img src="profile.jpg" alt="Profile" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    <img src="profile.jpg" alt="Profilehttps://scontent.fbkk22-2.fna.fbcdn.net/v/t39.30808-6/711709473_2394837197667750_2574019075777161019_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHyrJ0ZpMEU7qsxr6K6HwgCqJDikdAp1_mokOKR0CnX-aLJqAOrj1A_c9LKyLR2Qpn_DCnjIDeuwD2XaCr6DHGN&_nc_ohc=nS65dH1T3bMQ7kNvwEL_aMV&_nc_oc=Adr60lt836WT65-rFrikZ9VGUVUUZr2Yd1wgYPD94Pb8ZTn0IAFqh4b-oN_jdPoqoMk&_nc_zt=23&_nc_ht=scontent.fbkk22-2.fna&_nc_gid=3rTLPTH72eb8n7o68hyVag&_nc_ss=7b2a8&oh=00_AQGiohGt1zy3952CYIMJa3uPSf0G-JRyg3NjMi48j5sihA&oe=6A8DD4D6" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
                 </div>
                 <div class="developer-details">
                     <h3>ข้อมูลผู้พัฒนา</h3>
