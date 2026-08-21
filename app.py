@@ -595,7 +595,7 @@ Numeric Vector (3,000 features)
             
             <div class="developer-info">
                 <div class="developer-photo">
-                    <img src="profile.jpg" alt="Profile Photo" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    <img src="profile" alt="Profile Photo" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
                 </div>
                 <div class="developer-details">
                     <h3>ข้อมูลผู้พัฒนา</h3>
