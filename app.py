@@ -764,7 +764,14 @@ elif page == "🔍 เช็ค SMS":
                     
                     # 3. ทำนายผล
                     prediction = model.predict(vectorized_text)[0]
+
+                    # ตรวจสอบว่าโมเดลรองรับ predict_proba หรือไม่
+                    try:
                     probability = model.predict_proba(vectorized_text)[0]
+                    has_proba = True
+                    except (AttributeError, NotImplementedError):
+                    has_proba = False
+                    probability = None
                     
                     # 4. แสดงผลลัพธ์
                     st.markdown("---")
